@@ -4,7 +4,7 @@ import { prettyJSON } from 'hono/pretty-json'
 import getEndpoint from "./src/get.js";
 import upload from "./src/upload.js";
 
-const app = new Hono()
+const app = new Hono({ strict: false })
 
 app.use('*', prettyJSON())
 
