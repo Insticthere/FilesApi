@@ -1,4 +1,4 @@
-import connectMongo from "../utils/connectMongo.js";
+import connectMongo from "../../utils/connectMongo.js";
 import { nanoid } from "nanoid";
 let regex =
   /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
@@ -6,7 +6,7 @@ let regex =
 let customCode = false;
 let id = nanoid(8);
 export default function upload(app) {
-  app.get("/api/upload/:url", async (c) => {
+  app.get("/u/upload/:url", async (c) => {
     const { url: urlParam } = c.req.param();
     const { code, key } = c.req.query();
 

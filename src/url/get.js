@@ -1,4 +1,4 @@
-import connectMongo from "../utils/connectMongo.js";
+import connectMongo from "../../utils/connectMongo.js";
 
 export default function getEndpoint(app) {
     app.get('/api/get/:id', async (c) => {
