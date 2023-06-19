@@ -5,7 +5,7 @@ let regex =
 
 let customCode = false;
 let id = nanoid(8);
-export default function upload(app) {
+export default function uploadEndpoint(app) {
   app.get("/u/upload/:url", async (c) => {
     const { url: urlParam } = c.req.param();
     const { code, key } = c.req.query();

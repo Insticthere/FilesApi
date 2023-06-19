@@ -1,7 +1,7 @@
 import connectMongo from "../../utils/connectMongo.js";
 
 export default function getEndpoint(app) {
-    app.get('/api/get/:id', async (c) => {
+    app.get('/u/get/:id', async (c) => {
       const { id: id } = c.req.param();
   
       try {
