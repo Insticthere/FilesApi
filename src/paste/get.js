@@ -1,7 +1,7 @@
 import connectMongo from "../../utils/connectMongo.js";
 
 export default function getPaste(app) {
-  app.get("/p/:id", async (c) => {
+  app.get("/p/get/:id", async (c) => {
     const { id: id } = c.req.param();
     const client = await connectMongo();
     const db = client.db();

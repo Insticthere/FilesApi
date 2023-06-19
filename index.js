@@ -23,9 +23,7 @@ serve({
 app.get('/u/upload', (c) => c.text('Provide a url', 400))
 app.get('/u/get', (c) => c.text('Provide a code', 400))
 app.get('/u/del', (c) => c.text('Provide a code', 400))
-app.get('/p', (c) => c.text('Provide a code', 400))
-
-
+app.get('/p/get', (c) => c.text('Provide a code', 400))
 
 app.get('/u/*', (c) => {
   return c.json('API endpoint is not found', 404)
