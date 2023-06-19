@@ -4,19 +4,21 @@ import { Hono } from 'hono'
 import getEndpoint from "./src/url/get.js";
 import uploadEndpoint from "./src/url/upload.js";
 import deleteEndpoint from "./src/url/delete.js";
+import newEndpoint from './src/paste/new.js';
 
 const app = new Hono({ strict: false })
 
 getEndpoint(app)
 uploadEndpoint(app)
 deleteEndpoint(app)
+newEndpoint(app)
 
 serve({
     fetch: app.fetch,
     port: 8787,
   })
 
-// s for url, i for images, p for paste bin, f for files
+// u for url, i for images, p for paste bin, f for files
 
 app.get('/api/upload', (c) => c.text('Provide a url', 400))
 app.get('/api/get', (c) => c.text('Provide a code', 400))
