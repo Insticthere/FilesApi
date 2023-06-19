@@ -1,6 +1,6 @@
 import connectMongo from "../../utils/connectMongo.js";
 
-export default function deleteEndpoint(app) {
+export default function deleteUrl(app) {
   app.get("/u/del/:id", async (c) => {
     const { id: id } = c.req.param();
     const { key } = c.req.query();

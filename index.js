@@ -1,17 +1,17 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 // import { html } from 'hono/html'
-import getEndpoint from "./src/url/get.js";
-import uploadEndpoint from "./src/url/upload.js";
-import deleteEndpoint from "./src/url/delete.js";
-import newEndpoint from './src/paste/new.js';
+import getUrl from "./src/url/get.js";
+import uploadUrl from "./src/url/upload.js";
+import deleteUrl from "./src/url/delete.js";
+import uploadPaste from './src/paste/new.js';
 
 const app = new Hono({ strict: false })
 
-getEndpoint(app)
-uploadEndpoint(app)
-deleteEndpoint(app)
-newEndpoint(app)
+getUrl(app)
+uploadUrl(app)
+deleteUrl(app)
+uploadPaste(app)
 
 serve({
     fetch: app.fetch,
@@ -20,10 +20,17 @@ serve({
 
 // u for url, i for images, p for paste bin, f for files
 
-app.get('/api/upload', (c) => c.text('Provide a url', 400))
-app.get('/api/get', (c) => c.text('Provide a code', 400))
-app.get('/api/del', (c) => c.text('Provide a code', 400))
-app.get('/api/*', (c) => {
+app.get('/u/upload', (c) => c.text('Provide a url', 400))
+app.get('/u/get', (c) => c.text('Provide a code', 400))
+app.get('/u/del', (c) => c.text('Provide a code', 400))
+app.get('/p', (c) => c.text('Provide a code', 400))
+
+
+
+app.get('/u/*', (c) => {
+  return c.json('API endpoint is not found', 404)
+})
+app.get('/p/*', (c) => {
   return c.json('API endpoint is not found', 404)
 })
 

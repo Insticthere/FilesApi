@@ -1,7 +1,7 @@
 import connectMongo from "../../utils/connectMongo.js";
 import { nanoid } from "nanoid";
 
-export default function newEndpoint(app) {
+export default function uploadPaste(app) {
   app.post("/p/new", async (c) => {
     const body = await c.req.parseBody()
     if (!body.code || body.code == "") return c.json('No code found!')
@@ -15,7 +15,7 @@ export default function newEndpoint(app) {
       id : id
     }
 
-    await db.collection("urls").insertOne(urlObj);
+    await db.collection("paste").insertOne(urlObj);
 
     return c.json({code : id}, 200)  
 
