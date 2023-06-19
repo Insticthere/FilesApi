@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "start": "tsx src/index.ts"
+    "start": "node index.js"
   },
   "dependencies": {
     "@hono/node-server": "^1.0.1",
