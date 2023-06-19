@@ -4,9 +4,10 @@ let regex =
   /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
 
 let customCode = false;
-let id = nanoid(8);
+
 export default function uploadEndpoint(app) {
   app.get("/u/upload/:url", async (c) => {
+    let id = nanoid(8);
     const { url: urlParam } = c.req.param();
     const { code, key } = c.req.query();
 
