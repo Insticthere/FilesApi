@@ -6,11 +6,16 @@ export default function getPaste(app) {
     const client = await connectMongo();
     const db = client.db();
 
-    const url = await db.collection("paste").findOne({ id: id });
+    const paste = await db.collection("paste").findOne({ id: id });
 
-    if (!url) return c.json("No paste found.")
+    if (!paste) return c.json("No paste found.")
 
-    return c.json({url}, 200)  
+    return c.json({ 
+      code : paste.code,
+      lang : paste.lang,
+      timer : paste.time,
+      id : paste.id
+    }, 200); 
 
   });
 }

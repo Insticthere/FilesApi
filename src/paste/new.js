@@ -3,8 +3,11 @@ import { nanoid } from "nanoid";
 
 export default function uploadPaste(app) {
   app.post("/p/new", async (c) => {
+    let lang;
     const body = await c.req.parseBody()
     if (!body.code || body.code == "") return c.json('No code found!')
+    if (!body.lang || body.code == "") lang = null;
+    lang = body.lang;
     let id = nanoid(8);
     const client = await connectMongo();
     const db = client.db();
@@ -12,8 +15,9 @@ export default function uploadPaste(app) {
     const urlObj = {
       code: body.code,
       time : new Date(),
-      id : id
-    }
+      id : id,
+      lang : lang,
+    };
 
     await db.collection("paste").insertOne(urlObj);
 
