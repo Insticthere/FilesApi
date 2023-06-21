@@ -6,7 +6,7 @@ export default function uploadPaste(app) {
     let lang;
     const body = await c.req.parseBody()
     if (!body.code || body.code == "") return c.json('No code found!')
-    if (!body.lang || body.code == "") lang = null;
+    if (!body.lang || body.lang == "") lang = null;
     lang = body.lang;
     let id = nanoid(8);
     const client = await connectMongo();
@@ -14,7 +14,7 @@ export default function uploadPaste(app) {
 
     const urlObj = {
       code: body.code,
-      time : new Date().now(),
+      time : Date.now(),
       id : id,
       lang : lang,
     };
