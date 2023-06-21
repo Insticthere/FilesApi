@@ -48,7 +48,7 @@ export default function uploadUrl(app) {
       const urlObj = {
         id: id,
         url: urlParam,
-        createdAt: new Date(),
+        createdAt: new Date().now(),
       };
 
       await db.collection("urls").insertOne(urlObj);

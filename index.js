@@ -6,6 +6,7 @@ import deleteUrl from "./src/url/delete.js";
 import uploadPaste from './src/paste/new.js';
 import getPaste from './src/paste/get.js';
 import deletePaste from './src/paste/delete.js';
+import uploadImage from './src/images/upload.js';
 
 const app = new Hono({ strict: false })
 
@@ -15,6 +16,7 @@ deleteUrl(app)
 uploadPaste(app)
 getPaste(app)
 deletePaste(app)
+uploadImage(app)
 
 serve({
     fetch: app.fetch,

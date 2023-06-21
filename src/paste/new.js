@@ -14,7 +14,7 @@ export default function uploadPaste(app) {
 
     const urlObj = {
       code: body.code,
-      time : new Date(),
+      time : new Date().now(),
       id : id,
       lang : lang,
     };
