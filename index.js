@@ -32,5 +32,3 @@ app.get('/u/get', (c) => c.json('Provide a code', 400))
 app.get('/u/del', (c) => c.json('Provide a code', 400))
 app.get('/p/get', (c) => c.json('Provide a code', 400))
 export default app;
-  
-

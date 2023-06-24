@@ -1,5 +1,4 @@
 import { Deta } from 'deta';
-import { nanoid } from "nanoid";
 import { html } from 'hono/html'
 
 const deta = Deta();

@@ -8,6 +8,7 @@ const images = deta.Base('images')
 
 export default function uploadImage(app) {
   app.post("/i/new", async (c) => {
+    
     const { image } = await c.req.parseBody()
 
     const { key } = c.req.query();
