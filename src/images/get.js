@@ -24,9 +24,15 @@ export default function getImage(app) {
 
     return c.html(
          html`
-            <div style="background-color:black; text-align:center; padding: 5px;">
-                <img src="${src}">
-            </div>
+         <head>
+         <title>Test Site</title>
+         <meta property="og:title" content="${data.name}"/>
+          <meta property="og:image" content="${src}"/>
+
+          </head>
+          <body style="margin: 0px; background: #0e0e0e; height: 100%">
+          <img src="${src}" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;">
+          </body>
             `
       )     
   });

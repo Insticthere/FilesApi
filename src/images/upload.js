@@ -9,7 +9,7 @@ const images = deta.Base('images')
 export default function uploadImage(app) {
   app.post("/i/new", async (c) => {
     
-    const { image } = await c.req.parseBody()
+    const { image } = await c.req.parseBody();
 
     const { key } = c.req.query();
   
@@ -26,15 +26,24 @@ export default function uploadImage(app) {
   
     const removedPart = image.type.split("/").pop();
 
+    const url = c.req.headers.get('host') + `/i/get/` + id
+
     const data = {
       key : id,
       date : Date.now(),
-      type : removedPart
+      name : image.name,
+      type : removedPart,
+      url: url,
+      size: image.size,
     }
 
     await images.put(data);
     await drive.put(`${id}.${removedPart}`, { data: view });
-    return c.json(`uploaded as ${id}`, 200);
+    return c.json({
+      id : id,
+      url : url,
+      image: image.name
+    }, 200);
      
   });
 }
