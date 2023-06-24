@@ -32,10 +32,9 @@ export default function uploadImage(app) {
       type : removedPart
     }
 
-    await images.put(data)
-
+    await images.put(data);
     await drive.put(`${id}.${removedPart}`, { data: view });
-    return c.text(`uploaded as ${id}`, 200);
+    return c.json(`uploaded as ${id}`, 200);
      
   });
 }
