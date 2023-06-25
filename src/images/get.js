@@ -22,14 +22,17 @@ export default function getImage(app) {
     const base64Data = buffer.toString('base64');
     const src = `data:${response.type};base64,${base64Data}`;
 
+    const imageUrl = `https://${c.req.headers.get('host')}/i/raw/${id}`
+
     return c.html(
          html`
-         <head>
-         <title>${data.name}</title>
-          </head>
-          <body style="margin: 0px; background: #0e0e0e; height: 100%">
+        <head>
+          <meta property="og:title" content="${data.name}"/>
+          <meta property="og:image" content="${imageUrl}"/>
+        </head>
+        <body style="margin: 0px; background: #0e0e0e; height: 100%">
           <img src="${src}" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;">
-          </body>
+        </body>
             `
       )     
   });

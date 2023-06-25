@@ -9,7 +9,7 @@ import deletePaste from './src/paste/delete.js';
 import uploadImage from './src/images/upload.js';
 import getImage from './src/images/get.js';
 import delImage from './src/images/delete.js';
-
+import rawImage from './src/images/raw.js';
 
 const app = new Hono({ strict: false })
 
@@ -22,6 +22,7 @@ deletePaste(app)
 uploadImage(app)
 getImage(app)
 delImage(app)
+rawImage(app)
 
 serve({
     fetch: app.fetch,
