@@ -24,19 +24,27 @@ export default function getImage(app) {
 
     const imageUrl = `https://${c.req.headers.get('host')}/i/raw/${id}`
 
+    c.header('Cache-Control', 'public, max-age=31536000, immutable');
+
     return c.html(
          html`
+      <html style="height: 100%;">
         <head>
-          <meta property="og:image" content="${imageUrl}"/>
-          <meta property="og:image:type" content="image/${data.type}" />
-          <meta
-            property="og:image:alt"
-            content="Shared Image"
-          />
+          <title>${data.name}</title>
+          <meta charset="utf-8">
+          <meta name="robots" content="noindex">
+          <meta name="theme-color" content="#30acff">
+          <meta property="og:title" content="${data.name}">
+          <meta property="og:description" content="Uploaded at ${data.date}">
+          <meta property="og:image" content="${imageUrl}">
+          <meta property="twitter:card" content="summary_large_image">
+          <meta name="viewport" content="width=device-width, minimum-scale=0.1">
         </head>
-        <body style="margin: 0px; background: #0e0e0e; height: 100%">
+
+        <body style="margin: 0px; background: #0e0e0e; height: 100%;">
           <img src="${src}" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;">
         </body>
+      </html>
             `
       )     
   });

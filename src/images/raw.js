@@ -20,6 +20,7 @@ export default function rawImage(app) {
 
     const buffer = Buffer.from(await response.arrayBuffer());
 
+    c.header('Cache-Control', 'public, max-age=31536000, immutable');
     c.header('Content-Type', `image/${data.type}`)
     return c.body(buffer);
 
