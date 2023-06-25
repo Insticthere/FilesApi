@@ -27,8 +27,12 @@ export default function getImage(app) {
     return c.html(
          html`
         <head>
-          <meta property="og:title" content="${data.name}"/>
           <meta property="og:image" content="${imageUrl}"/>
+          <meta property="og:image:type" content="image/${data.type}" />
+          <meta
+            property="og:image:alt"
+            content="Shared Image"
+          />
         </head>
         <body style="margin: 0px; background: #0e0e0e; height: 100%">
           <img src="${src}" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;">
