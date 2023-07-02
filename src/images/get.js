@@ -12,11 +12,11 @@ export default function getImage(app) {
 
     const data = await images.get(id)
 
-    if (data === null) return c.json('no image found');
+    if (data === null) return c.json({ error :'no image found'});
 
     const response = await drive.get(`${id}.${data.type}`); 
 
-    if (response == null) return c.json('no image found');
+    if (response == null) return c.json({ error :'no image found'});
 
     const buffer = Buffer.from(await response.arrayBuffer());
     const base64Data = buffer.toString('base64');

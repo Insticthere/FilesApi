@@ -31,7 +31,6 @@ serve({
 
 // u for url, i for images, p for paste bin, f for files
 
-app.get('/u/upload', (c) => c.json('Provide a url', 400))
 app.get('/u/get', (c) => c.json('Provide a code', 400))
 app.get('/u/del', (c) => c.json('Provide a code', 400))
 app.get('/p/get', (c) => c.json('Provide a code', 400))

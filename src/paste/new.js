@@ -5,7 +5,7 @@ export default function uploadPaste(app) {
   app.post("/p/new", async (c) => {
     let lang;
     const body = await c.req.parseBody()
-    if (!body.code || body.code == "") return c.json('No code found!')
+    if (!body.code || body.code == "") return c.json({error : 'No code found!'})
     if (!body.lang || body.lang == "") lang = null;
     lang = body.lang;
     let id = nanoid(8);

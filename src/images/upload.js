@@ -13,7 +13,7 @@ export default function uploadImage(app) {
 
     const { key } = c.req.query();
   
-    if (!image || image.type.split("/")[0] !== "image") return c.json('please provide a image');
+    if (!image || image.type.split("/")[0] !== "image") return c.json({error : 'please provide a image'});
 
     if (!key) return c.json({ error: "No key" }, 400);
     if (key !== process.env.KEY) return c.json({ error: "Wrong key" }, 400);

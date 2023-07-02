@@ -8,7 +8,6 @@ const connectMongo = async () => {
   if (!client) {
     client = new MongoClient(process.env.MONGO_URI);
     await client.connect();
-    console.log('new')
   }
   
   return client;

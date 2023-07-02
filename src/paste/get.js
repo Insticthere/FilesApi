@@ -8,7 +8,7 @@ export default function getPaste(app) {
 
     const paste = await db.collection("paste").findOne({ id: id });
 
-    if (!paste) return c.json("No paste found.")
+    if (!paste) return c.json({error : "No paste found."})
 
     return c.json({ 
       code : paste.code,

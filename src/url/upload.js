@@ -6,10 +6,12 @@ let regex =
 let customCode = false;
 
 export default function uploadUrl(app) {
-  app.get("/u/upload/:url", async (c) => {
+  app.post("/u/upload", async (c) => {
+
     let id = nanoid(8);
-    const { url: urlParam } = c.req.param();
-    const { code, key } = c.req.query();
+    const { code, key, url: urlParam } = await c.req.parseBody();
+
+    if (urlParam == undefined || urlParam == "") return c.json({ error: "Provide a url" }, 400);
 
     if (code !== undefined && code !== "") {
       if (!key) return c.json({ error: "No key" }, 400);

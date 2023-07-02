@@ -15,7 +15,7 @@ export default function delImage(app) {
 
     const data = await images.get(id)
 
-    if (data === null) return c.json('no image found');
+    if (data === null) return c.json({error : 'No image found'});
 
     await images.delete(data.key)
     await drive.delete(`${id}.${data.type}`); 
