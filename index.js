@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 import getUrl from "./src/url/get.js";
 import uploadUrl from "./src/url/upload.js";
 import deleteUrl from "./src/url/delete.js";
@@ -12,6 +13,13 @@ import delImage from './src/images/delete.js';
 import rawImage from './src/images/raw.js';
 
 const app = new Hono({ strict: false })
+
+app.use( // no questions to be asked for this
+  '*',
+  cors({
+    
+  })
+)
 
 getUrl(app)
 uploadUrl(app)
