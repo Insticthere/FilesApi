@@ -37,10 +37,11 @@ export default function uploadUrl(app) {
       const existingId = existingData?.id;
 
       if (existingUrl == urlParam && !customCode)
-        return c.json({ id: existingId });
+        return c.json({ url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/u/get/${existingId}`, id : existingId  });
+        
 
       if (customCode && existingUrl === urlParam && existingId === code)
-        return c.json({ id: existingId });
+        return c.json({ url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/u/get/${existingId}`, id : existingId  });
 
       if (customCode && existingId === code)
         return c.json({
@@ -55,7 +56,7 @@ export default function uploadUrl(app) {
 
       await db.collection("urls").insertOne(urlObj);
 
-      return c.json({ id });
+      return c.json({ url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/u/get/${id}`, id : id  });
     } catch (err) {
       console.log(err);
       return c.json({ error: "An error occurred while saving the URL." }, 500);

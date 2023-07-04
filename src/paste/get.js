@@ -13,8 +13,8 @@ export default function getPaste(app) {
     return c.json({ 
       code : paste.code,
       lang : paste.lang,
-      timer : paste.time,
-      id : paste.id
+      time : paste.time,
+      id : paste.id,
     }, 200); 
 
   });

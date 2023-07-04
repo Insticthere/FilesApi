@@ -22,30 +22,27 @@ export default function getImage(app) {
     const base64Data = buffer.toString('base64');
     const src = `data:${response.type};base64,${base64Data}`;
 
-    const imageUrl = `https://${c.req.headers.get('host')}/i/raw/${id}`
+    const imageUrl = `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/i/get/${id}`
 
     c.header('Cache-Control', 'public, max-age=31536000, immutable');
 
-    return c.html(
-         html`
-      <html style="height: 100%;">
-        <head>
-          <title>${data.name}</title>
-          <meta charset="utf-8">
-          <meta name="robots" content="noindex">
-          <meta name="theme-color" content="#30acff">
-          <meta property="og:title" content="${data.name}">
-          <meta property="og:description" content="Uploaded at ${data.date}">
-          <meta property="og:image" content="${imageUrl}">
-          <meta property="twitter:card" content="summary_large_image">
-          <meta name="viewport" content="width=device-width, minimum-scale=0.1">
-        </head>
+      return c.html(
+        html`
+          <head>
+            <title>${data.name}</title>
+            <meta charset="utf-8">
+            <meta name="robots" content="noindex">
+            <meta name="theme-color" content="#30acff">
+            <meta property="og:title" content="${data.name}">
+            <meta property="og:description" content="Uploaded at ${data.date}">
+            <meta property="og:image" content="${imageUrl}">
+            <meta name="viewport" content="width=device-width, minimum-scale=0.1">
+          </head>
 
-        <body style="margin: 0px; background: #0e0e0e; height: 100%;">
-          <img src="${src}" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;">
-        </body>
-      </html>
-            `
-      )     
+          <body style="margin: 0; background: #0e0e0e; display: flex; align-items: center; justify-content: center; height: 100vh;">
+            <img src="${src}" style="max-width: 100%; height: auto;">
+          </body>
+        `
+      );     
   });
 };

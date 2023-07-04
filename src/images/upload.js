@@ -26,22 +26,20 @@ export default function uploadImage(app) {
   
     const removedPart = image.type.split("/").pop();
 
-    const url = c.req.headers.get('host') + `/i/get/` + id
-
     const data = {
       key : id,
       date : Date.now(),
       name : image.name,
       type : removedPart,
-      url: url,
       size: image.size,
     }
 
     await images.put(data);
+
     await drive.put(`${id}.${removedPart}`, { data: view });
     return c.json({
       id : id,
-      url : url,
+      url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/u/get/${id}`,
       image: image.name
     }, 200);
      

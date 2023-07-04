@@ -21,7 +21,7 @@ export default function uploadPaste(app) {
 
     await db.collection("paste").insertOne(urlObj);
 
-    return c.json({code : id}, 200)  
+    return c.json({code : id, url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/p/get/${id}`}, 200)  
 
   });
 }
