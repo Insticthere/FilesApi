@@ -14,7 +14,7 @@ export default function getUrl(app) {
           return c.json({ error: "URL not found." }, 200);
         }
   
-        return c.json({url : url.url});
+        return c.json({url : url.url, id : id});
   
       } catch (err) {
         console.log(err);
