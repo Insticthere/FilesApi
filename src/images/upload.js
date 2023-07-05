@@ -35,11 +35,11 @@ export default function uploadImage(app) {
     }
 
     await images.put(data);
-
     await drive.put(`${id}.${removedPart}`, { data: view });
+
     return c.json({
       id : id,
-      url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/i/get/${id}`,
+      url : new URL(`/i/get/${id}`, c.req.url),
       image: image.name
     }, 200);
      
