@@ -22,7 +22,7 @@ export default function getImage(app) {
     const base64Data = buffer.toString('base64');
     const src = `data:${response.type};base64,${base64Data}`;
 
-    const imageUrl = `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/i/get/${id}`
+    const imageUrl = `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/i/raw/${id}`
 
     c.header('Cache-Control', 'public, max-age=31536000, immutable');
 
