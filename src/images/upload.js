@@ -39,7 +39,7 @@ export default function uploadImage(app) {
 
     return c.json({
       id : id,
-      url : `${new URL(c.req.url).protocol}s//${c.req.headers.get('host')}/i/get/${id}`,
+      url : `${new URL(c.req.url).protocol}//${c.req.headers.get('host')}/i/get/${id}`,
       image: image.name
     }, 200);
      
